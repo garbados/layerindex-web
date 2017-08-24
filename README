@@ -202,13 +202,19 @@ wouldn't be able to pick it up.
 Using Custom Settings
 ---------------------
 
-You will need to modify settings.py to run layerindex-web in either development or production. As an example of development settings, you can use dev_settings.py. It uses SQLite3 as a database and a console backend for email, so that sent emails show up in your terminal rather than being sent anywhere.
+You will need to modify settings.py to run layerindex-web in either
+development or production. As an example of development settings, you
+can use dev_settings.py. It uses SQLite3 as a database and a console
+backend for email, so that sent emails show up in your terminal rather
+than being sent anywhere.
 
-Then, to use these settings in with `manage.py`, do this:
+Then, start the server using the settings in dev_settings.py:
 
-```bash
 python3 manage.py runserver --settings=dev_settings
-```
+
+To start the Celery worker using dev_settings.py, run this:
+
+DJANGO_SETTINGS_MODULE=dev_settings celery -A layerindex.tasks worker --loglevel=info
 
 
 Maintenance
